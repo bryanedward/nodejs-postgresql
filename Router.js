@@ -5,7 +5,7 @@ var controller = require('./controller')
 var router = Router()
 
 router.get('/home', controller.getAll)
-router.post('/save', controller.saveData)
+router.get('/save/:data?', controller.getOne)
 
 
 module.exports = router
