@@ -5,6 +5,8 @@ var config = require('./config')
 
 const client = new Client(config)
 
+console.log(config.user);
+
 function connectpg() {
     client.connect((err) => {
         if (err) {
@@ -13,7 +15,6 @@ function connectpg() {
             app.listen(4000)
             console.log('conexion' + config.port);
         }
-        
     })
 };
 
