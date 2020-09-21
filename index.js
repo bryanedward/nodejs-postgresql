@@ -5,17 +5,15 @@ var config = require('./config')
 
 const client = new Client(config)
 
-console.log(config.user);
 
-function connectpg() {
-    client.connect((err) => {
-        if (err) {
-            return console.error('eror de conexion', err.stack)
-        }else{
-            app.listen(4000)
-            console.log('conexion' + config.port);
-        }
-    })
+async function connectpg() {
+    try {
+        await client.connect()
+        app.listen(config.port)
+        console.log('coneccion');
+    } catch (error) {
+        console.log(error);
+    }
 };
 
 connectpg()
