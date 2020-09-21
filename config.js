@@ -1,8 +1,10 @@
-const config = {
-    host: 'localhost',
-    user: 'postgres',
-    password: 'ryanescor96',
-    database: 'library'
-};
+const dotenv = require('dotenv')
 
-module.exports = config
+dotenv.config()
+
+module.exports = {
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PASS,
+    database: process.env.DB
+};
