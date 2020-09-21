@@ -10,7 +10,7 @@ async function connectpg() {
         if (err) {
             return console.error('eror de conexion', err.stack)
         }
-        app.listen(4000)
+        app.listen(5432)
         console.log('conexion');
     })
 };
