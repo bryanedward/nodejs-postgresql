@@ -3,17 +3,16 @@ var app = require('./App')
 var config = require('./config')
 
 
-const client = new Client(config)
-
+const pool = new Client(config)
 
 async function connectpg() {
-    try {
-        await client.connect()
+    pool.connect((err) => {
+        if (err) {
+            return console.error('eror de conexion', err.stack)
+        }
         app.listen(4000)
-        console.log('coneccion');
-    } catch (error) {
-        console.log(error);
-    }
+        console.log('conexion');
+    })
 };
 
 connectpg()
