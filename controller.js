@@ -15,7 +15,7 @@ var consult = {
         // obtener un dato
         try {
             const data = await
-                pool.query(`select * from books where nameuser = '${req.params.data}'`);
+                pool.query(`select * from books where namebook = '${req.params.data}'`);
             res.status(200).send({ publications: data.rows })
         } catch (error) {
             console.log(error);
@@ -26,15 +26,31 @@ var consult = {
         // guardar datos
         try {
             const text = `
-            INSERT INTO books (nameUser,emailUser,passUser, roleUser, photouser)
-            VALUES ($1, $2, $3, $4, $5);
+            INSERT INTO books (namebook,descriptbook,yearbook, price)
+            VALUES ($1, $2, $3, $4);
             `;
-            const values = [req.body.name, req.body.email, req.body.password, req.body.role, 'https://n9.cl/ql56'];
+            const values = [req.body.name, req.body.descrip, req.body.year, req.body.price];
             await pool.query(text, values);
-            res.send({ publications: 'perfecto' })
+            res.send({ message: 'libro creado' })
         } catch (e) {
-            console.log(e);
+            res.send(e);
         }
+    },
+
+    updateBook: async function (req, response) {
+        // actualizar un libro
+        await pool.query(`update books set 
+            namebook = '${req.body.namebook}',
+            descriptbook = '${req.body.descriptbook}',
+            price = '${req.body.price}' 
+            where isbn = ${req.body.isbn}`, (err, res) => {
+
+            if (err != null) {
+                console.log(err);
+            } else {
+                response.send('ok');
+            }
+        });
     }
 }
 
