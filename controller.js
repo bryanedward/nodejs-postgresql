@@ -1,7 +1,7 @@
 var { Pool } = require('pg')
-var config = require('./config')
-
-var pool = new Pool(config)
+var CryptoJS = require("crypto-js");
+var config = require('./config');
+var pool = new Pool(config);
 
 var consult = {
 
@@ -11,15 +11,9 @@ var consult = {
         res.status(200).send({ publications: books.rows })
     },
 
-    getOne: async function (req, res) {
+    getOne: function (req, res) {
         // obtener un dato
-        try {
-            const data = await
-                pool.query(`select * from books where namebook = '${req.params.data}'`);
-            res.status(200).send({ publications: data.rows })
-        } catch (error) {
-            console.log(error);
-        }
+
     },
 
     saveData: async function (req, res) {
@@ -53,5 +47,6 @@ var consult = {
         });
     }
 }
+
 
 module.exports = consult
