@@ -25,7 +25,7 @@ var consult = {
             `;
             const values = [req.body.name, req.body.descrip, req.body.year, req.body.price];
             await pool.query(text, values);
-            res.send({ message: 'libro creado' })
+            res.send({ message: 'libro creado!' })
         } catch (e) {
             res.send(e);
         }
