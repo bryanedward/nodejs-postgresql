@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 body{
     width: 94%;
     height: 100%;
@@ -6,14 +6,109 @@ body{
     margin-top: 1rem;
 }
 
-
-.containerMascotas{
-    max-width: 80%;
-    margin: auto;
-}
-
 .cardPrincipal{
     width: auto;
+    border-color: #0088a9;
     border: 1px solid;
     margin-bottom: 1rem;
+}
+nav{
+    order: 1;
+    
+}
+
+li, a{
+    font-family: "Montserrat",sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+header{
+    height: 30px;
+    width: 86.4%;
+    background-color: #20615B;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+
+}
+
+.logo{
+    width: 77px;
+    cursor: pointer;
+    
+}
+
+.barrasuperior{
+    list-style: none;
+
+}
+
+.barrasuperior li{
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.barrasuperior li a{
+    transition: all 0.3s ease 0s;
+}
+.barrasuperior li a:hover{
+    color: #F3C583;
+}
+
+.containerMascotas{
+    width: 800px;
+    background: #20615B;
+    padding: 30px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 4px;
+    font-family: "Montserrat",sans-serif;
+    color: white;
+    box-shadow: 7px 13px 37px rgba(0, 0, 0, 0.774);
+}
+.containerMascotas h4{
+    text-decoration: none;
+    color:#f3eacf;
+    background-color: #44444442;
+    padding: 20px 0px 10px 10px;
+}
+.containerMascotas p{
+    color:#DECE9C;
+    padding: 20px 0px 10px 10px;
+}
+.boxe {
+    top:0px;
+    position: sticky;
+    height: 30px;
+    width: 86.4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+    background-color: #1A1831;
+   
+  }
+  .box select {
+    background-color: #DECE9C;
+    color:#20615B;
+    padding: 12px;
+    width: 200px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px #f3c48373;
+    outline: none;
+  }
+  
+  .box select option {
+    padding: 30px;
+  }
+  img{
+      height: 565px;
+  }
+#b1{
+    transition:cubic-bezier(1, 0, 0, 1);
 }

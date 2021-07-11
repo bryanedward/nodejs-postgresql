@@ -45,7 +45,7 @@ function crearLista(item) {
     var tarjeta = document.createElement('div')
     tarjeta.innerHTML = `
     <div class="cardPrincipal">
-        <h4>nivel de estado</h4>
+        <h4>Nivel de estado</h4>
         <p>${item.nivelsalud}</p>    
         <h4>Codigo de Mascota</h4>
         <p>${item.codmascota}</p>
