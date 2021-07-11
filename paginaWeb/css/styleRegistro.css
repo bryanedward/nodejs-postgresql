@@ -1,19 +1,7 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 .container{
     display: flex;
     flex-direction: row;
-}
-
-
-
-.listaPaciente{
-    width: 50%;
-}
-
-
-.listaPaciente >div{
-    margin: 2rem;
-    border-radius: 1rem;
-    border: 1px solid salmon;
 }
 
 .formulario{
@@ -31,4 +19,258 @@ input[type=text] {
     border-radius: 4px;
     box-sizing: border-box;
   }
+
+  html {
+    font-family: 'Montserrat', Arial, sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
   
+  body {
+    background: #F2F3EB;
+  }
+  
+  
+ select {
+    text-transform: none;
+  }
+  
+input, select, textarea {
+    color: #5A5A5A;
+    font: inherit;
+    margin: 0;
+  }
+  
+  input {
+    line-height: normal;
+  }
+  
+  textarea {
+    overflow: auto;
+  }
+  
+  #container {
+    border: solid 3px #474544;
+    max-width: 768px;
+    margin: 60px auto;
+    position: relative;
+  }
+  
+  form {
+    padding: 37.5px;
+    margin: 50px 0;
+  }
+  
+  h1 {
+    color: #474544;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 7px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  input[type='text'], select, textarea {
+      background: none;
+    border: none;
+      border-bottom: solid 2px #474544;
+      color: #474544;
+      font-size: 1.000em;
+    font-weight: 400;
+    letter-spacing: 1px;
+      margin: 0em 0 1.875em 0;
+      padding: 0 0 0.875em 0;
+    text-transform: uppercase;
+      width: 100%;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      box-sizing: border-box;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -ms-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s;
+  }
+  
+  input[type='text']:focus:focus, textarea:focus {
+      outline: none;
+      padding: 0 0 0.875em 0;
+  }
+  
+  .message {
+      float: none;
+  }
+  
+  .name {
+      float: left;
+      width: 45%;
+  }
+  
+  select {
+    outline: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+  
+  select::-ms-expand {
+    display: none;
+  }
+  
+  ::-webkit-input-placeholder {
+      color: #474544;
+  }
+  
+  :-moz-placeholder { 
+      color: #474544;
+      opacity: 1;
+  }
+  
+  ::-moz-placeholder {
+      color: #474544;
+      opacity: 1;
+  }
+  
+  :-ms-input-placeholder {
+      color: #474544;
+  }
+  
+  
+  
+  @media screen and (max-width: 768px) {
+    #container {
+      margin: 20px auto;
+      width: 95%;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    h1 {
+      font-size: 26px;
+    }
+    
+    .underline {
+      width: 68px;
+    }
+    
+    #form_button {
+      padding: 15px 25px;
+    }
+  }
+  
+  @media screen and (max-width: 420px) {
+    h1 {
+      font-size: 18px;
+    }
+    
+    .underline {
+      width: 53px;
+    }
+    
+    input[type='text'], select, textarea {
+      font-size: 0.875em;
+    }
+  }
+
+  nav{
+    order: 1;
+    
+}
+
+li, a{
+    font-family: "Montserrat",sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+header{
+    height: 30px;
+    width: 80.0.1%;
+    background-color: #20615B;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+}
+
+.logo{
+    width: 77px;
+    cursor: pointer;
+    
+}
+
+.barrasuperior{
+    list-style: none;
+
+}
+
+.barrasuperior li{
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.barrasuperior li a{
+    transition: all 0.3s ease 0s;
+}
+.barrasuperior li a:hover{
+    color: #F3C583;
+}
+
+button {
+    margin: 20px 20px 20px;
+	padding: .9em 2.2em;
+	cursor: pointer;
+	background: #FFFFFF;
+	border: none;
+	border-radius: .01em;
+    box-shadow: 7px 13px 37px rgba(0, 0, 0, 0.322);
+	text-transform: uppercase;
+	font-size: 1.4em;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 500;
+    color: #474544;
+}
+
+button:hover{
+    color: #F3C583;
+}
+
+.formulario1{
+    display: flex;
+    justify-content: space-around;
+    width: 600px;
+    height: 300px;
+    background: #20615B;
+    padding: 30px;
+    margin: 20px;
+    margin-top: 70px;
+    border-radius: 4px;
+    font-family: "Montserrat",sans-serif;
+    color: white;
+    box-shadow: 7px 13px 37px rgba(0, 0, 0, 0.774);
+}
+.formulario1 #pp{
+    padding-top: auto;
+    margin-right: 20px;
+    padding-left: 5px;
+    color: #F3C583;
+}
+.formulario1 p{  
+    display: inline-flex;
+    color:#edf0f1;
+}
+.formulario1 img{
+    margin-right: 20px;
+    width: 180px;
+    height: 180px;
+}
+.formulario1 #btnDialog{
+    display: block;
+}
+.formulario1 h2{
+    margin: 0%;
+    padding: 0%;
+}

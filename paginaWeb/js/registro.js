@@ -39,13 +39,20 @@ function crearLista(params) {
 
     var tarjetaPaciente = document.createElement('div')
     tarjetaPaciente.innerHTML = `
-            <p>cedula del cliente: ${params.cedula}</p>
-            <p>nombre: ${params.nombre}</p>
-            <p>apellido: ${params.apellido}</p>
-            <p>direccion: ${params.direccion}</p>
-            <p>celular: ${params.celular}</p>
-            <p>fecha visita: ${params.fechavisita}</p>
-            <button id="btnDialog" class="btnDialog">chequear este paciente</button>
+    <div class="formulario1">
+            <img src="../img/default-user-image.png">
+            <section>
+            <h2>Cliente</h2>
+            <p id="pp">Cedula:<p>${params.cedula}</p></p>
+            <p id="pp">Nombre:<p>${params.nombre}</p></p>
+            <p id="pp">Apellido:<p>${params.apellido}</p></p>
+            <p id="pp">Direccion:<p>${params.direccion}</p></p>
+            <p id="pp">Celular:<p>${params.celular}</p></p>
+            <p id="pp" >Fecha:<p>${params.fechavisita}</p></p>
+            </section>
+            <section>
+            <button id="btnDialog" class="btnDialog">Chequear paciente</button></section>
+            </div>
             `
 
     var btnDialog = tarjetaPaciente.querySelector('.btnDialog')
@@ -73,7 +80,8 @@ function crearChequeo(params) {
     var crearFormularioCheq = document.createElement('div')
     formulario.innerHTML = " "
     crearFormularioCheq.innerHTML = `
-        <h2>Ficha medica de ${params.nombreanimal}</h2>
+        
+        <h2 >Ficha medica de ${params.nombreanimal}</h2>
         <label for="cedulaVeterianario">cedula del veterinario</label>
         <input type="text" placeholder="cedulaVeterianario">
         <label for="responsable">responsable de animal (dueño)</label>
@@ -91,6 +99,7 @@ function crearChequeo(params) {
         <label for="esterilizado">esterilizado del animal </label>
         <input type="text" placeholder="esterilizado" value=${esterilizado}>
         <button id="btnEnviarChequeo" class="btnEnviarChequeo">EnviarChequeo</button>
+        
     `
 
 
