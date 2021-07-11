@@ -7,8 +7,25 @@ var consult = {
 
     getAll: async function (req, res) {
         // obtener todos los datos
-        const mascota = await pool.query('select * from mascota');
+        const mascota = await pool.query(`select * from mascota where edad = ${req.params.edad}`);
+
         res.status(200).json(mascota.rows)
+    },
+    consultarMedicamentos: async function (req, res) {
+        try {
+            const producto = await pool.query('select * from producto');
+            res.status(200).json(producto.rows)
+        } catch (error) {
+
+        }
+    },
+    consultarEdad: async function (req, res) {
+        try {
+            const edadesMascotas = await pool.query('select distinct edad from mascota');
+            res.status(200).json(edadesMascotas.rows)
+        } catch (error) {
+
+        }
     },
 
     getOne: async function (req, res) {
@@ -16,7 +33,7 @@ var consult = {
         try {
             const data = await
                 pool.query(`select * from mascota where nivelsalud = '${req.params.data}'`);
-            res.status(200).json(data.rows )
+            res.status(200).json(data.rows)
         } catch (error) {
             console.log(error);
         }

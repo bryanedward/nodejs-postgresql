@@ -1,0 +1,18 @@
+body{
+    width: 94%;
+    height: 100%;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+
+.containerMedicamentos{
+    max-width: 80%;
+    margin: auto;
+}
+
+.cardPrincipal{
+    width: auto;
+    border: 1px solid;
+    margin-bottom: 1rem;
+}

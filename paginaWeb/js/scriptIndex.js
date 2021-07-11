@@ -1,16 +1,25 @@
 var estado = document.getElementById('estado')
 var containerMascotas = document.getElementById('containerMascotas')
+var edades = document.getElementById('edades')
 
+consultarMascotas(edades.value)
+
+
+edades.addEventListener('click', () => {
+    consultarMascotas(edades.value)
+    containerMascotas.innerHTML =""
+})
 
 estado.addEventListener('click', () => {
     filtarConsulta(estado.value)
+    containerMascotas.innerHTML = ""
 })
 
-consultarMascotas()
+
 
 function consultarMascotas() {
     //obtener la lista de las mascotas
-    fetch('http://localhost:3500/')
+    fetch(`http://localhost:3500/mascotas/${edades.value}`)
         .then(response => response.json())
         .then(data =>
             listaMascota(data)
@@ -19,7 +28,6 @@ function consultarMascotas() {
 
 function filtarConsulta(item) {
     //filtar mascota por el nivel de estado
-    containerMascotas.innerHTML = ""
     fetch(`http://localhost:3500/get/${item}`).then(response => response.json())
         .then(data =>
             listaMascota(data)
@@ -34,7 +42,6 @@ function listaMascota(params) {
 
 function crearLista(item) {
     //crear la lista para la visualizacion
-    console.log(item);
     var tarjeta = document.createElement('div')
     tarjeta.innerHTML = `
     <div class="cardPrincipal">
@@ -46,4 +53,3 @@ function crearLista(item) {
     `;
     containerMascotas.appendChild(tarjeta)
 }
-
