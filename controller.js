@@ -5,11 +5,15 @@ var pool = new Pool(config)
 
 var consult = {
 
-    getAll: async function (req, res) {
+    consultarMascotas: async function (req, res) {
         // obtener todos los datos
         const mascota = await pool.query(`select * from mascota where edad = ${req.params.edad}`);
 
         res.status(200).json(mascota.rows)
+    },
+    consultarUsuarios: async function (req, res) {
+        const usuarios = await pool.query('select * from mascota inner join usuario on  usuario.cedula = mascota.responsable')
+        res.status(200).json(usuarios.rows)
     },
     consultarMedicamentos: async function (req, res) {
         try {
@@ -41,14 +45,20 @@ var consult = {
 
     saveData: async function (req, res) {
         // guardar datos
+
+        const { nombreClient, cedulaClient, dirreClient, celularClient, apellidoClient, fechaIngreso, generoAnimal } = req.body
         try {
             const text = `
-            INSERT INTO books (namebook,descriptbook,yearbook, price)
-            VALUES ($1, $2, $3, $4);
+            INSERT INTO usuario (cedula,nombre,apellido,genero,
+                direccion,
+                celular,fechavisita)
+            VALUES ($1, $2, $3, $4, $5, $6, $7);
             `;
-            const values = [req.body.name, req.body.descrip, req.body.year, req.body.price];
+            const values = [cedulaClient,
+                nombreClient, apellidoClient,
+                generoAnimal, dirreClient, celularClient, fechaIngreso];
             await pool.query(text, values);
-            res.send({ message: 'libro creado' })
+            res.send({ message: 'creado' })
         } catch (e) {
             res.send(e);
         }
