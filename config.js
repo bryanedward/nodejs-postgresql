@@ -3,8 +3,8 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 module.exports = {
-    user: process.env.USERW,
-    host: process.env.HOST,
-    database: process.env.DATABASE,
-    password: process.env.PASSWORD
+    user: process.env.User,
+    host: process.env.Host,
+    database: process.env.Database,
+    password: process.env.Password
 };
