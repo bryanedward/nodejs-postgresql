@@ -7,16 +7,16 @@ var consult = {
 
     getAll: async function (req, res) {
         // obtener todos los datos
-        const books = await pool.query('select * from books');
-        res.status(200).send({ publications: books.rows })
+        const mascota = await pool.query('select * from mascota');
+        res.status(200).json(mascota.rows)
     },
 
     getOne: async function (req, res) {
         // obtener un dato
         try {
             const data = await
-                pool.query(`select * from books where namebook = '${req.params.data}'`);
-            res.status(200).send({ publications: data.rows })
+                pool.query(`select * from mascota where nivelsalud = '${req.params.data}'`);
+            res.status(200).json(data.rows )
         } catch (error) {
             console.log(error);
         }
