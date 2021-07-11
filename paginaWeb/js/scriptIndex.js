@@ -1,32 +1,48 @@
 var estado = document.getElementById('estado')
 var containerMascotas = document.getElementById('containerMascotas')
-var edades = document.getElementById('edades')
+var container = document.getElementById('containerEdades')
+consultarEdad()
 
-consultarMascotas(edades.value)
-
-
-edades.addEventListener('click', () => {
-    consultarMascotas(edades.value)
-    containerMascotas.innerHTML =""
-})
 
 estado.addEventListener('click', () => {
-    filtarConsulta(estado.value)
+    consultarEstado(estado.value)
     containerMascotas.innerHTML = ""
 })
 
 
 
-function consultarMascotas() {
+function consultarEdad() {
+    //obtener las edades de las mascotas
+    fetch('http://localhost:3500/edadesMascotas')
+        .then(response => response.json())
+        .then(data =>
+            data.forEach(element => {
+              crearItems(element) 
+            })
+        );
+}
+
+function crearItems(params) {
+    var item = document.createElement('option')
+    item.innerHTML = `${params.edad}`
+    item.addEventListener('click', () => {
+        containerMascotas.innerHTML = " "
+        consultarMascotas(item.value)        
+    })
+    container.appendChild(item)
+}
+
+
+function consultarMascotas(item) {
     //obtener la lista de las mascotas
-    fetch(`http://localhost:3500/mascotas/${edades.value}`)
+    fetch(`http://localhost:3500/mascotas/${item}`)
         .then(response => response.json())
         .then(data =>
             listaMascota(data)
         );
 }
 
-function filtarConsulta(item) {
+function consultarEstado(item) {
     //filtar mascota por el nivel de estado
     fetch(`http://localhost:3500/get/${item}`).then(response => response.json())
         .then(data =>
@@ -49,6 +65,12 @@ function crearLista(item) {
         <p>${item.nivelsalud}</p>    
         <h4>Codigo de Mascota</h4>
         <p>${item.codmascota}</p>
+        <h4>nombre de la mascota</h4>
+        <p>${item.nombreanimal}</p>
+        <h4>edad</h4>
+        <p>${item.edad}</p>
+        <h4>raza</h4>
+        <p>${item.raza}</p>
     </div>
     `;
     containerMascotas.appendChild(tarjeta)
