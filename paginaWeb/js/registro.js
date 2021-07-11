@@ -80,26 +80,26 @@ function crearChequeo(params) {
     var crearFormularioCheq = document.createElement('div')
     formulario.innerHTML = " "
     crearFormularioCheq.innerHTML = `
-        
+        <form id="container">
         <h2 >Ficha medica de ${params.nombreanimal}</h2>
-        <label for="cedulaVeterianario">cedula del veterinario</label>
-        <input type="text" placeholder="cedulaVeterianario">
-        <label for="responsable">responsable de animal (dueño)</label>
-        <input type="text" placeholder="cedulaVeterianario" value ="${params.nombre} ${params.apellido} " disabled>
-        <label for="nombreAnimal">nombre de la mascota</label>
+        <label for="cedulaVeterianario">Cedula del veterinario</label>
+        <input type="text" placeholder="CedulaVeterianario">
+        <label for="responsable">Responsable de animal (dueño)</label>
+        <input type="text" placeholder="CedulaVeterianario" value ="${params.nombre} ${params.apellido} " disabled>
+        <label for="nombreAnimal">Nombre de la mascota</label>
         <input type="text"  value="${params.nombreanimal}">
-        <label for="nombreAnimal">estado de salud</label>
+        <label for="nivelSalud">Estado de salud</label>
         <input type="text"  value="${params.nivelsalud}">
-        <label for="fechaNacimi">fecha de nacimiento del animal</label>
+        <label for="fechaNacimi">Fecha de nacimiento del animal</label>
         <input type="text" placeholder="fechaNacimi" value="${params.fechanac}">
-        <label for="raza">raza del animal </label>
-        <input type="text" placeholder="raza" value="${params.raza}">
-        <label for="genero">genero del animal </label>
-        <input type="text" placeholder="genero" value="${params.genero}">
-        <label for="esterilizado">esterilizado del animal </label>
-        <input type="text" placeholder="esterilizado" value=${esterilizado}>
+        <label for="raza">Raza del animal </label>
+        <input type="text" placeholder="Raza" value="${params.raza}">
+        <label for="genero">Genero del animal </label>
+        <input type="text" placeholder="Genero" value="${params.genero}">
+        <label for="esterilizado">Esterilizado del animal </label>
+        <input type="text" placeholder="Esterilizado" value=${esterilizado}>
         <button id="btnEnviarChequeo" class="btnEnviarChequeo">EnviarChequeo</button>
-        
+        </form>
     `
 
 
@@ -117,6 +117,7 @@ function crearIngreso() {
     var crearFormularioIngre = document.createElement('div')
     formulario.innerHTML = " "
     crearFormularioIngre.innerHTML = `
+    <form id="container">
         <label for="nombreCLiente">Nombre del cliente</label>
         <input type="text" id="nombreCLiente" class="nombreCLiente" 
         placeholder="">
@@ -142,6 +143,7 @@ function crearIngreso() {
         <input type="text" id="animalGenero" class="animalGenero"
         placeholder="">
         <button id="btnEnviarFactura" class="btnEnviarFactura">EnviarFactura</button>
+        </form>
     `
 
     var todayDate = new Date().toISOString().slice(0, 10);
