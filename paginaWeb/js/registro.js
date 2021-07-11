@@ -82,31 +82,47 @@ function crearChequeo(params) {
     crearFormularioCheq.innerHTML = `
         
         <h2 >Ficha medica de ${params.nombreanimal}</h2>
-        <label for="cedulaVeterianario">cedula del veterinario</label>
-        <input type="text" placeholder="cedulaVeterianario">
+        
+        <label for="cedulaVeterinario">cedula del veterinario</label>
+        <input type="text" placeholder="cedulaV" id="cedulaV" value="hol">
+        
         <label for="responsable">responsable de animal (dueño)</label>
-        <input type="text" placeholder="cedulaVeterianario" value ="${params.nombre} ${params.apellido} " disabled>
+        <input type="text" placeholder="cedulaVeterianario"  id="responsable" value ="${params.nombre} ${params.apellido} " disabled>
+        
         <label for="nombreAnimal">nombre de la mascota</label>
-        <input type="text"  value="${params.nombreanimal}">
-        <label for="nombreAnimal">estado de salud</label>
-        <input type="text"  value="${params.nivelsalud}">
+        <input type="text"  value="${params.nombreanimal}" name="nombreAnimal" id="nombreAnimal">
+        
+        <label for="estadoSalud">estado de salud</label>
+        <input type="text"  value="${params.nivelsalud}" 
+        name="estadoSalud" id="estadoSalud">
+        
         <label for="fechaNacimi">fecha de nacimiento del animal</label>
-        <input type="text" placeholder="fechaNacimi" value="${params.fechanac}">
+        <input type="text" placeholder="fechaNacimi" value="${params.fechanac}" 
+        name="fechaNacimi" id="fechaNacimi">
+        
         <label for="raza">raza del animal </label>
-        <input type="text" placeholder="raza" value="${params.raza}">
+        <input type="text" placeholder="raza" value="${params.raza}" 
+        name="raza" id="raza">
+        
         <label for="genero">genero del animal </label>
-        <input type="text" placeholder="genero" value="${params.genero}">
+        <input type="text" placeholder="genero" value="${params.genero}" 
+        name="genero" id="genero">
+        
         <label for="esterilizado">esterilizado del animal </label>
-        <input type="text" placeholder="esterilizado" value=${esterilizado}>
+        <input type="text" placeholder="esterilizado" value="${esterilizado}" 
+        name="esterilizado" id="esterilizado">
+        
         <button id="btnEnviarChequeo" class="btnEnviarChequeo">EnviarChequeo</button>
         
     `
 
-
-
-    crearFormularioCheq.addEventListener('click', () => {
-        console.log("cheqeui");
+    const btnEnviarChequeo = crearFormularioCheq.querySelector('.btnEnviarChequeo')
+   
+    btnEnviarChequeo.addEventListener('click',() => {
+    const cedulaVeterinario = crearFormularioCheq.querySelector('.cedulaV')
+        console.log(cedulaVeterinario.value);
     })
+    
 
     formulario.appendChild(crearFormularioCheq)
 }
