@@ -1,3 +1,5 @@
+
+
 CREATE TABLE IF NOT EXISTS usuario(
     cedula varchar not null,
     nombre VARCHAR NOT NULL,
