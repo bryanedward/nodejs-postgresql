@@ -25,15 +25,24 @@ function crearLista(item) {
     tarjeta.innerHTML = `
     
     <div class="cardPrincipal">
-        <h4>Nivel de estado :</h4>
+        <div>
+        <p class="title">Nivel de estado :</p>
         <p>${item.codigoproduc}</p>    
-        <h4>Codigo de Mascota :</h4>
+        </div>
+        <div>
+        <p class="title">Codigo de Mascota :</p>
         <p>${item.nombrevacuna}</p>
-        <h4>Vacuna :</h4>
+        </div>
+        <div>
+        <p class="title">Vacuna :</p>
         <p>${item.descripvacuna}</p>
-        <h4>Proveedor de Vacuna :</h4>
+        </div>
+        <div>
+        <p class="title">Proveedor de Vacuna :</p>
         <p>${item.nombreproveedor}</p>
-    </div>
+        </div>
+    
+        </div>
     `;
     containerMedicamentos.appendChild(tarjeta)
 }

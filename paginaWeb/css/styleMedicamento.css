@@ -3,13 +3,14 @@ div{
    display: flex ;
    flex-wrap: wrap ;
    justify-content: flex-start;
+   margin: auto;
 }
 
 .cardPrincipal{
     justify-content: space-between;
     align-items: stretch;
     margin: 30px;
-    width:550px;
+    width:560px;
     height:auto;
     background:#e6e6e6;
     box-shadow:0 0 40px -10px #000;  
@@ -23,6 +24,18 @@ div{
     padding-left: 5px;
     color:#474544;
 }
+
+.cardPrincipal div{
+  margin: auto;
+}
+
+.title{
+  color: #000;
+  font-style: normal;
+  font-weight: bolder;
+  margin-left: 1px;
+}
+
 .titulo{
     z-index: 222;
     top:0px;
