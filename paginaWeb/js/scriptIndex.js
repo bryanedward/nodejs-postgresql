@@ -62,15 +62,28 @@ function crearLista(item) {
     var tarjeta = document.createElement('div')
     tarjeta.innerHTML = `
     <div class="cardPrincipal">
-        <h4>Nivel de estado</h4>
-        <p>${item.nivelsalud}</p>    
-        <h4>Codigo de Mascota</h4>
+        <h4>Codigo de Mascota:</h4>
         <p>${item.codmascota}</p>
-        <h4>nombre de la mascota</h4>
+        <p id="b"></p> 
+        <h4>nombre de la mascota:</h4>
         <p>${item.nombreanimal}</p>
-        <h4>edad</h4>
+        <p id="b"></p> 
+        <h4>Nivel de estado:</h4>
+        <p>${item.nivelsalud}</p>
+        <p id="b"></p>    
+        <h4>Responsable:</h4>
+        <p>${item.responsable}</p>
+        <p id="b"></p> 
+        <h4>Color:</h4>
+        <p>${item.color} </p>
+        <p id="b"></p>
+        <h4>Fecha de nacimiento:</h4>
+        <p>${item.fechanac} </p>
+        <p id="b"></p>
+        <h4>edad:</h4>
         <p>${item.edad}</p>
-        <h4>raza</h4>
+        <p id="b"></p> 
+        <h4>raza:</h4>
         <p>${item.raza}</p>
     </div>
     `;

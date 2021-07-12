@@ -7,12 +7,8 @@ body{
     margin-top: 1rem;
 }
 
-.cardPrincipal{
-    width: auto;
-    border-color: #0088a9;
-    border: 1px solid;
-    margin-bottom: 1rem;
-}
+
+
 nav{
     order: 1;
     
@@ -61,25 +57,45 @@ header{
 }
 
 .containerMascotas{
-    width: 800px;
-    background: #20615B;
-    padding: 30px;
-    margin: auto;
-    margin-top: 100px;
-    border-radius: 4px;
-    font-family: "Montserrat",sans-serif;
-    color: white;
-    box-shadow: 7px 13px 37px rgba(0, 0, 0, 0.774);
+    width:550px;
+    height:auto;
+    background:#e6e6e6;
+    box-shadow:0 0 40px -10px #000;
+    margin:calc(50vh - 220px) auto;
+    padding:30px;
+    max-width:calc(100vw - 40px);
+    box-sizing:border-box;
+    font-family:'Montserrat',sans-serif;
 }
+.containerMascotas div{   
+    padding: 1px;
+
+}
+
+.containerMascotas p{   
+    top: 10px;
+    display: inline;
+    width:180px;
+    color:#78788c;
+}
+.containerMascotas #b{
+    border-top:1px solid #78788c;
+    display: block;
+    padding: 0px;
+    width:auto;
+    background-color:#78788c;
+}
+
 .containerMascotas h4{
-    text-decoration: none;
-    color:#f3eacf;
-    background-color: #44444442;
-    padding: 20px 0px 10px 10px;
+    
+    padding: 20px;
+    display: inline;
+   
 }
 .containerMascotas p{
-    color:#DECE9C;
-    padding: 20px 0px 10px 10px;
+    padding: 2px;
+    color:#1A1831;
+
 }
 .boxe {
     top:0px;
