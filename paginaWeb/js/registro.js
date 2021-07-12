@@ -4,12 +4,14 @@ var listaPaciente = document.getElementById('listaPaciente')
 var todayDate = new Date().toISOString().slice(0, 10);
 var container_chequero = document.getElementById('containerChequeo')
 var container_ingreso = document.getElementById('containerIngreso')
+var containerProductos = document.getElementById('containerProductos')
 
 consultaListaPaciente()
 
 registro.addEventListener('click', () => {
     switch (registro.value) {
         case "chequeoMedico":
+            containerProductos.innerHTML = " "
             container_ingreso.innerHTML = " "
             listaPaciente.innerHTML = " "
             consultaListaPaciente()
@@ -21,10 +23,74 @@ registro.addEventListener('click', () => {
             container_ingreso.innerHTML = " "
             formularioCliente()
             break;
+        case "IngresoProductos":
+            listaPaciente.innerHTML = " "
+            container_ingreso.innerHTML = " "
+            containerProductos.innerHTML = " "
+            formularioProductos()
+            break;
         default:
             break;
     }
 })
+
+
+function formularioProductos() {
+    var div = document.createElement('div')
+    div.innerHTML = `
+   <form id="container">
+   <h2 id="fichaCliente">Ficha del productos</h2>
+   
+   <label >Codigo del producto</label>
+   <input id="codigP"  type="text" placeholder="codigo del producto" >
+   
+   <label >nombre de la vacuna</label>
+   <input id="nombreP"  type="text" placeholder="nombre del producto" >
+   
+   <label >descripcion de la vacuna</label>
+   <input id="descripC" type="text" placeholder="descrip de la vacuna" >
+   
+   <label >cantidad disponible</label>
+   <input id="cantidP" type="number" placeholder="cantidad disponible" >
+   <hr>
+   <br>
+   <label >nombre del proveedor</label>
+   <input id="nombreProv" type="text" placeholder="nombre del proveedor" >
+ 
+   <button id="btnGuardaProd" type="button" style=" margin-top: 14px;" >Guardar Product</button>
+   </form>    
+   `
+    var btnGuardaProd = div.querySelector('#btnGuardaProd')
+    var codigP = div.querySelector('#codigP')
+    var nombreP = div.querySelector('#nombreP')
+    var descripC = div.querySelector('#descripC')
+    var cantidP = div.querySelector('#cantidP')
+    var nombreProv = div.querySelector('#nombreProv')
+
+    btnGuardaProd.addEventListener('click', () => {
+        if (codigP.value.trim() === "" ||
+            nombreP.value.trim() === "" ||
+            descripC.value.trim() === "" ||
+            cantidP.value.trim() === "" ||
+            nombreProv.value.trim() === "") {
+            alert('complete los campos')
+        } else {
+            var urlProductos = "http://localhost:3500/guardarProducto"
+            const datosProductos = {
+                codigP: codigP.value.trim(),
+                nombreP: nombreP.value.trim(),
+                descripC: descripC.value.trim(),
+                cantidP: cantidP.value.trim(),
+                nombreProv: nombreProv.value.trim()
+            }
+            enviarFormularios(datosProductos, urlProductos)
+            alert('creado')
+        }
+    })
+
+
+    containerProductos.appendChild(div)
+}
 
 
 function formularioCliente() {
@@ -108,39 +174,39 @@ function formularioCliente() {
     var esteriliz = div.querySelector('#esterilizado')
 
     btnS.addEventListener('click', () => {
-        if(cedulaC.value.trim() === "" ||
-        nombreC.value.trim() === "" ||
-        apellidoC.value.trim() === "" ||
-        direccionC.value.trim() === "" ||
-        celularC.value.trim() === "" ||
-        fechaC.value.trim() === "" ||
-        nombreAnimal.value.trim() === "" ||
-        fechaNac.value.trim() === "" ||
-        genero.value.trim() === "" ||
-        raza.value.trim() === "" ||
-        edad.value.trim() === "" ||
-        color.value.trim() === "" ||
-        esteriliz.value.trim() === ""){
+        if (cedulaC.value.trim() === "" ||
+            nombreC.value.trim() === "" ||
+            apellidoC.value.trim() === "" ||
+            direccionC.value.trim() === "" ||
+            celularC.value.trim() === "" ||
+            fechaC.value.trim() === "" ||
+            nombreAnimal.value.trim() === "" ||
+            fechaNac.value.trim() === "" ||
+            genero.value.trim() === "" ||
+            raza.value.trim() === "" ||
+            edad.value.trim() === "" ||
+            color.value.trim() === "" ||
+            esteriliz.value.trim() === "") {
             alert("completa los campos")
-        }else{
+        } else {
             var urlIngreso = "http://localhost:3500/guardarIngreso"
             const datosIngreso = {
-               cedula: cedulaC.value.trim(),
-               nombre: nombreC.value.trim(),
-               apellido: apellidoC.value.trim(),
-               direccion: direccionC.value.trim(),
-               celular: celularC.value.trim(),
-               fechaIngreso: fechaC.value.trim(),
-               nombreAni: nombreAnimal.value.trim(),
-               fechaNac: fechaNac.value.trim(),
-               genero: genero.value.trim(),
-               raza: raza.value.trim(),
-               edad: edad.value.trim(),
-               color: color.value.trim(),
-               estirilizado: esteriliz.value.trim()
+                cedula: cedulaC.value.trim(),
+                nombre: nombreC.value.trim(),
+                apellido: apellidoC.value.trim(),
+                direccion: direccionC.value.trim(),
+                celular: celularC.value.trim(),
+                fechaIngreso: fechaC.value.trim(),
+                nombreAni: nombreAnimal.value.trim(),
+                fechaNac: fechaNac.value.trim(),
+                genero: genero.value.trim(),
+                raza: raza.value.trim(),
+                edad: edad.value.trim(),
+                color: color.value.trim(),
+                estirilizado: esteriliz.value.trim()
             }
             enviarFormularios(datosIngreso, urlIngreso)
-        } 
+        }
     })
 
     container_ingreso.appendChild(div)
@@ -185,7 +251,7 @@ function crearLista(params) {
         crearChequeo(params)
     })
 
-    btnDialogCobrar.addEventListener('click', ()  => {
+    btnDialogCobrar.addEventListener('click', () => {
         crearFactura(params)
     })
 

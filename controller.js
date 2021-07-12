@@ -73,6 +73,21 @@ var consult = {
         }
     },
 
+    guardarProducto: async function (req, res) {
+        const { codigP, nombreP, descripC, cantidP, nombreProv } = req.body
+        try {
+            const text = ` INSERT INTO producto (codigoproduc,nombrevacuna,descripvacuna,
+                cantdisponibidad, nombreproveedor)
+            VALUES ($1, $2, $3, $4, $5);
+            `;
+            const values = [codigP, nombreP, descripC, Number(cantidP), nombreProv];
+            await pool.query(text, values);
+            res.send({ message: 'creado producto' })
+        } catch (e) {
+            res.send(e);
+        }
+    },
+
     guardarIngreso: async function (req, res) {
         const { cedula, nombre, apellido, direccion, celular, fechaIngreso, nombreAni, fechaNac, genero, raza, edad, color, esterilizado } = req.body
         try {

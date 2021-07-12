@@ -57,7 +57,7 @@ header{
 }
 
 .containerMascotas{
-    width:550px;
+    width: 50%;
     height:auto;
     background:#e6e6e6;
     box-shadow:0 0 40px -10px #000;
@@ -67,6 +67,15 @@ header{
     box-sizing:border-box;
     font-family:'Montserrat',sans-serif;
 }
+.cardPrincipal{
+    margin-bottom: 4rem;
+    border: 1px solid rgb(82, 82, 82);
+    border-radius: 4px ;
+    background-color: rgb(227, 220, 235);
+}
+
+
+
 .containerMascotas div{   
     padding: 1px;
 

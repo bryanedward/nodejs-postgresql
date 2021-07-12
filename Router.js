@@ -11,6 +11,7 @@ router.get('/edadesMascotas', controller.consultarEdad)
 router.get('/get/:data?', controller.getOne)
 router.post('/guardarRegistro', controller.guardarRegistro)
 router.post('/guardarIngreso', controller.guardarIngreso)
+router.post('/guardarProducto', controller.guardarProducto)
 router.post('/actualizarRegistro', controller.actulizarRegistro)
 router.post('/update',controller.updateBook)
 
