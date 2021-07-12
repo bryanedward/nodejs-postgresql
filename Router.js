@@ -14,5 +14,6 @@ router.post('/guardarIngreso', controller.guardarIngreso)
 router.post('/guardarProducto', controller.guardarProducto)
 router.post('/actualizarRegistro', controller.actulizarRegistro)
 router.post('/update',controller.updateBook)
+router.delete('/elimnar',controller.eliminar)
 
 module.exports = router

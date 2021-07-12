@@ -240,12 +240,15 @@ function crearLista(params) {
             </section>
             <section>
             <button id="btnDialog" class="btnDialog">Chequear paciente</button>
-            <button id="btnDialogCobrar" class="btnDialogCobrar">Cobrar paciente</button></section>
+            <button id="btnDialogCobrar" class="btnDialogCobrar">Cobrar paciente</button>
+            <button id="btnDialogCerrar" class="btnDialogCerrar">eliminar paciente</button>
+            </section>
             </div>
             `
 
     var btnDialog = tarjetaPaciente.querySelector('.btnDialog')
     var btnDialogCobrar = tarjetaPaciente.querySelector('.btnDialogCobrar')
+    var btnDialogEliminar = tarjetaPaciente.querySelector('.btnDialogCerrar')
 
     btnDialog.addEventListener('click', () => {
         crearChequeo(params)
@@ -253,6 +256,20 @@ function crearLista(params) {
 
     btnDialogCobrar.addEventListener('click', () => {
         crearFactura(params)
+    })
+
+    btnDialogEliminar.addEventListener('click', () => {
+
+        const eliminarCedul = { cedula: params.cedula, dd: params.nombre }
+        fetch("http://localhost:3500/elimnar", {
+            method: 'DELETE',
+            body: JSON.stringify(eliminarCedul),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+            .catch(error => console.log('ERROR', error))
+            .then(response => location.href = window.location)
     })
 
     listaPaciente.appendChild(tarjetaPaciente)

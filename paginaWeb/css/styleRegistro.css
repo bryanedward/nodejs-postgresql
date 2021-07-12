@@ -4,6 +4,7 @@
     flex-direction: row;
 }
 
+
 .formulario{
     width: 50%;
     height: 50%;
@@ -298,6 +299,12 @@ button:hover{
     display: block;
     margin-bottom: 2rem;
 }
+
+.formulario1 #btnDialogCobrar{
+  display: block;
+  margin-bottom: 2rem;
+}
+
 .formulario1 h2{
     margin: 0%;
     padding: 0%;

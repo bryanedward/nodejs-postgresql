@@ -161,6 +161,23 @@ var consult = {
                 response.send('ok');
             }
         });
+    }, eliminar: async function (req, response) {
+        await pool.query(`delete from usuario  
+        where cedula = '${req.body.cedula}'`, (err, res) => {
+            if (err != null) {
+                console.log(err);
+            } else {
+                response.send({ message: "elom" });
+            }
+        });
+        await pool.query(`delete from mascota  
+        where responsable = '${req.body.cedula}'`, (err, res) => {
+            if (err != null) {
+                console.log(err);
+            } else {
+                response.send({ message: "elom" });
+            }
+        });
     }
 }
 
