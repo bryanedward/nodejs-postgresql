@@ -1,17 +1,73 @@
-
-
-.containerMedicamentos{
-    max-width: 80%;
-    margin: auto;
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+div{
+   display: flex ;
+   flex-wrap: wrap ;
+   justify-content: flex-start;
 }
 
 .cardPrincipal{
-    width: auto;
-    border: 1px solid;
-    margin: 4px;
-    display: inline-block;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 30px;
+    width:550px;
+    height:auto;
+    background:#e6e6e6;
+    box-shadow:0 0 40px -10px #000;  
+    padding:30px;
+    font-family:'Montserrat',sans-serif;
 }
 
-.cardPrincipal h4{
-    border: 1px solid;
+.cardPrincipal h4 p{
+    padding-top: auto;
+    margin-right: 20px;
+    padding-left: 5px;
+    color:#474544;
 }
+.titulo{
+    z-index: 222;
+    top:0px;
+    position: sticky;
+    height: 30px;
+    width: 80.0.1%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    background-color: #1A1831;
+}
+.titulo p{
+    font-family: 'Montserrat', sans-serif;
+    font-size:3em;
+    margin:5px;
+    text-transform:uppercase;
+    color:transparent;
+    text-shadow:0 0 1.5px white;
+    text-align:center;
+    letter-spacing:2px;
+    animation-name: focus;
+    animation-duration: 3s;
+    animation-iteration-count:infinite;
+    animation-direction: alternate;
+  }
+  
+  @keyframes focus {
+    0% {
+        text-shadow:0 0 30px, 0 20px 50px darken(50%);
+        letter-spacing:30px;
+    }
+    50% {
+      text-shadow:0 0 0;
+      font-size:2em;
+      letter-spacing:2px;
+    }
+    75% {
+      text-shadow:0 0 0;
+      font-size:2em;
+      letter-spacing:2px;
+    }
+    100% {
+      text-shadow:0 0 0;
+      font-size:2em;
+      letter-spacing:2px;
+    }
+  }

@@ -23,11 +23,16 @@ function crearLista(item) {
     console.log(item);
     var tarjeta = document.createElement('div')
     tarjeta.innerHTML = `
+    
     <div class="cardPrincipal">
-        <h4>Nivel de estado</h4>
+        <h4>Nivel de estado :</h4>
         <p>${item.codigoproduc}</p>    
-        <h4>Codigo de Mascota</h4>
+        <h4>Codigo de Mascota :</h4>
         <p>${item.nombrevacuna}</p>
+        <h4>Vacuna :</h4>
+        <p>${item.descripvacuna}</p>
+        <h4>Proveedor de Vacuna :</h4>
+        <p>${item.nombreproveedor}</p>
     </div>
     `;
     containerMedicamentos.appendChild(tarjeta)
