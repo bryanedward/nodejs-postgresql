@@ -58,6 +58,7 @@ function listaMascota(params) {
 
 function crearLista(item) {
     //crear la lista para la visualizacion
+    console.log(item);
     var tarjeta = document.createElement('div')
     tarjeta.innerHTML = `
     <div class="cardPrincipal">

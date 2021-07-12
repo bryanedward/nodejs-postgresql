@@ -66,8 +66,9 @@ function formularioCliente() {
         <input id="nombreAnimal" class="cedulaV" type="text" placeholder="nombre del Animal">
         
         <label for="fechaNacimi">Fecha de nacimiento del animal</label>
-        <input id="fechaNac" type="text" placeholder="fechaNacimi">
-        
+        <input id="fechaNac" type="date" placeholder="fechaNacimi">
+        <br>
+        <hr>
         <label for="genero">Genero del animal </label>
         <input id="genero" type="text" placeholder="Genero">
         
@@ -75,17 +76,18 @@ function formularioCliente() {
         <input id="raza" type="text" placeholder="Raza">
         
         <label for="edad">edad del animal </label>
-        <input id="edad" type="text" placeholder="edad">
-        
+        <input id="edad" type="number" placeholder="edad">
+        <br>
+        <hr>
         <label for="color">color del animal </label>
         <input id="color" type="text" placeholder="color">
 
+        <label for="esteriliza">esterilizado </label>
         <select name="esterilizado" id="esterilizado">
             <option value="si">si</option>
             <option value="no">no</option>
         </select>
-        
-        <button id="btnSiguiente" type="button" 
+        <button id="btnSiguiente" type="button" style=" margin-top: 14px;"
         class="btnSiguiente">Guardar Ingreso</button>
         </form>
     </div>
@@ -171,23 +173,60 @@ function crearLista(params) {
             <p id="pp" >Fecha:<p>${params.fechavisita}</p></p>
             </section>
             <section>
-            <button id="btnDialog" class="btnDialog">Chequear paciente</button></section>
+            <button id="btnDialog" class="btnDialog">Chequear paciente</button>
+            <button id="btnDialogCobrar" class="btnDialogCobrar">Cobrar paciente</button></section>
             </div>
             `
 
     var btnDialog = tarjetaPaciente.querySelector('.btnDialog')
+    var btnDialogCobrar = tarjetaPaciente.querySelector('.btnDialogCobrar')
 
     btnDialog.addEventListener('click', () => {
         crearChequeo(params)
     })
 
+    btnDialogCobrar.addEventListener('click', ()  => {
+        crearFactura(params)
+    })
+
     listaPaciente.appendChild(tarjetaPaciente)
+}
+
+function crearFactura(params) {
+    formulario.innerHTML = " "
+    var formFactura = document.createElement('div')
+    formFactura.innerHTML = `
+    <form id="container">
+    <h2 >Factura de ${params.nombre} - ${params.apellido}</h2>
+    <label for="cedulaVeterianario">Pasiente</label>
+    <input id="cedulaV" class="cedulaV" 
+    type="text" placeholder="CedulaVeterianario" value=${params.nombreanimal} disabled>
+    <label for="cedulaVeterianario">fecha de ingreso</label>
+    <input id="cedulaV" class="cedulaV" 
+    type="text" placeholder="CedulaVeterianario" value=${params.fechavisita} disabled>
+    <label for="cedulaVeterianario">nivel de salud</label>
+    <input id="cedulaV" class="cedulaV" 
+    type="text" placeholder="CedulaVeterianario" value=${params.nivelsalud} disabled>
+    <label for="cedulaVeter">cedula del veterinario</label>
+    <input id="cedulaV" class="cedulaV" 
+    type="text" placeholder="CedulaVeterianario" value=${params.veterinario} disabled>
+    <label for="cedulaVeter">descripcion medica</label>
+    <input id="cedulaV" class="cedulaV" 
+    type="text" placeholder="CedulaVeterianario" value=${params.descripcionmedica} disabled>
+    <label for="cedulaVeter">Costo total</label>
+    <input id="cedulaV" class="cedulaV" 
+    type="text" placeholder="Costa total">
+
+    <button id="btnEnviarChequeo" type="button" class="btnEnviarChequeo">Crear Factura</button>
+    </form>
+    `
+
+    formulario.appendChild(formFactura)
 }
 
 
 function crearChequeo(params) {
     //creacion del chequeo medico de los animales
-    console.log(params);
     var esterilizado = ""
     if (params.esterilizado) {
         esterilizado = "si"
@@ -254,7 +293,7 @@ function crearChequeo(params) {
             genero.value.trim() === "" ||
             esterilizad.value.trim() === "" ||
             codProducto.value.trim() === "") {
-            console.log("campos incompletos");
+            alert("campos incompletos");
         }
         else {
             const datosRegistro = {

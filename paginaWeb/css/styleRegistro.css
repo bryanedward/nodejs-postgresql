@@ -296,6 +296,7 @@ button:hover{
 }
 .formulario1 #btnDialog{
     display: block;
+    margin-bottom: 2rem;
 }
 .formulario1 h2{
     margin: 0%;

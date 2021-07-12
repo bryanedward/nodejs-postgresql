@@ -1,9 +1,3 @@
-body{
-    width: 94%;
-    height: 100%;
-    margin: auto;
-    margin-top: 1rem;
-}
 
 
 .containerMedicamentos{
@@ -14,5 +8,10 @@ body{
 .cardPrincipal{
     width: auto;
     border: 1px solid;
-    margin-bottom: 1rem;
+    margin: 4px;
+    display: inline-block;
+}
+
+.cardPrincipal h4{
+    border: 1px solid;
 }
