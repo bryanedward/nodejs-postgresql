@@ -12,7 +12,14 @@ var consult = {
         res.status(200).json(mascota.rows)
     },
     consultarUsuarios: async function (req, res) {
-        const usuarios = await pool.query('select * from mascota inner join usuario on  usuario.cedula = mascota.responsable')
+        const usuarios = await pool.query(`
+        select distinct mascota.codmascota, mascota.nombreanimal, mascota.fechanac, mascota.genero,
+			mascota.raza, mascota.raza, mascota.color, usuario.cedula, usuario.nombre,
+			usuario.apellido, usuario.direccion, usuario.celular, usuario.fechavisita,
+			fichamedica.codigoficha, fichamedica.veterinario, fichamedica.nivelsalud,
+			fichamedica.esterilizado, fichamedica.descripcionmedica
+            from mascota right join usuario on  usuario.cedula = mascota.responsable left join fichamedica  on fichamedica.responsable = usuario.cedula
+            where especialidad is null`)
         res.status(200).json(usuarios.rows)
     },
     consultarMedicamentos: async function (req, res) {
@@ -36,14 +43,16 @@ var consult = {
         // obtener un dato
         try {
             const data = await
-                pool.query(`select * from mascota where nivelsalud = '${req.params.data}'`);
+                pool.query(`
+                select * from mascota right join fichamedica on mascota.codmascota = fichamedica.codanimal
+                where nivelsalud = '${req.params.data}'`);
             res.status(200).json(data.rows)
         } catch (error) {
             console.log(error);
         }
     },
 
-    saveData: async function (req, res) {
+    guardarRegistro: async function (req, res) {
         // guardar datos
 
         const { nombreClient, cedulaClient, dirreClient, celularClient, apellidoClient, fechaIngreso, generoAnimal } = req.body
@@ -62,6 +71,65 @@ var consult = {
         } catch (e) {
             res.send(e);
         }
+    },
+
+    guardarIngreso: async function (req, res) {
+        const { cedula, nombre, apellido, direccion, celular, fechaIngreso, nombreAni, fechaNac, genero, raza, edad, color, esterilizado } = req.body
+        try {
+            const text = `
+            INSERT INTO usuario (cedula,nombre,apellido,
+                direccion,
+                celular,fechavisita)
+            VALUES ($1, $2, $3, $4, $5, $6);
+            `;
+            const values = [cedula,
+                nombre, apellido,
+                direccion, celular, fechaIngreso];
+            await pool.query(text, values);
+
+            const inserMasc = `INSERT INTO mascota (nombreanimal, fechanac, genero, raza, edad, color, 
+                responsable) VALUES($1, $2, $3, $4, $5, $6, $7 ) RETURNING *`
+            const valuesMasc = [nombreAni, fechaNac, genero, raza, Number(edad), color, cedula]
+
+
+            const insercionFicha = `
+                        INSERT INTO fichamedica (fechaFicha,responsable,
+                             esterilizado,codAnimal)
+                                    VALUES ($1, $2, $3, $4);
+                `;
+            // callback
+            await pool.query(inserMasc, valuesMasc, (err, res) => {
+                if (err) {
+                    console.log(err.stack)
+                } else {
+                    var codmascota = res.rows[0].codmascota
+                    const valuesFicha = [fechaIngreso,
+                        cedula, esterilizado,
+                        codmascota];
+                    pool.query(insercionFicha, valuesFicha);
+                }
+            })
+            res.send({ message: 'creado' })
+        } catch (e) {
+            res.send(e);
+        }
+    },
+    actulizarRegistro: async function (req, response) {
+        const { codProducto, fechaRegistro, cedulaResponsable, veterinario, nivelSalud, esterilizad } = req.body;
+        await pool.query(`update fichamedica 
+        set fechaficha= '${fechaRegistro}',
+        veterinario = '${veterinario}',
+        descripcionmedica = '${codProducto}',
+        nivelsalud = '${nivelSalud}',
+        esterilizado =  '${esterilizad}'
+        where responsable = '${cedulaResponsable}'
+        `, (err, res) => {
+            if (err != null) {
+                console.log(err);
+            } else {
+                response.send({ message: 'actualizado' })
+            }
+        })
     },
 
     updateBook: async function (req, response) {

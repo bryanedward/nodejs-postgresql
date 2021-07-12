@@ -9,7 +9,9 @@ router.get('/usuarios', controller.consultarUsuarios)
 router.get('/medicamentos', controller.consultarMedicamentos)
 router.get('/edadesMascotas', controller.consultarEdad)
 router.get('/get/:data?', controller.getOne)
-router.post('/guardarRegistro', controller.saveData)
+router.post('/guardarRegistro', controller.guardarRegistro)
+router.post('/guardarIngreso', controller.guardarIngreso)
+router.post('/actualizarRegistro', controller.actulizarRegistro)
 router.post('/update',controller.updateBook)
 
 module.exports = router
