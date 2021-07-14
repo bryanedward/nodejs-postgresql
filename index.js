@@ -9,7 +9,7 @@ async function connectpg() {
             return console.error('eror de conexion', err.stack)
         }
         app.listen(process.env.PORT || 3500)
-        console.log('conexion');
+        console.log('conexi');
     })
 };
 
